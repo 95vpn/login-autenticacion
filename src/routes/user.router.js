@@ -5,14 +5,14 @@ const { verifyJwt } = require('../utils/verifyJWT');
 const routerUser = express.Router();
 
 routerUser.route('/')
-    .get(verifyJwt, getAll)
+    .get(getAll)
     .post(create);
 
 routerUser.route('/login')
     .post(login)
 
 routerUser.route('/me')
-    .get(verifyJwt, logged)
+    .get(logged)
 
 routerUser.route('/reset_password')
     .post(resetPassword)
@@ -25,9 +25,9 @@ routerUser.route('/reset_password/:code')
     .post(updatePassword)
 
 routerUser.route('/:id')
-    .get(verifyJwt, getOne)
-    .delete(verifyJwt ,remove)
-    .put(verifyJwt, update);
+    .get(getOne)
+    .delete(remove)
+    .put(update);
 
 module.exports = routerUser;
 
